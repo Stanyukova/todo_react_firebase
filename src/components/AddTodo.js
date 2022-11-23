@@ -1,13 +1,15 @@
 import React from "react";
 import { db, storage } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
 
 export default function AddTodo() {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [deadline, setDeadline] = React.useState("");
   const [addFile, setAddFile] = React.useState("");
-  const [imageUpload, setImageUpload ] = React.useState(null);
+  const [imageUpload, setImageUpload] = React.useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (title !== "") {
@@ -18,11 +20,16 @@ export default function AddTodo() {
         completed: false,
       });
       setTitle("");
-  
     }
-   
-  }; 
-  const uploadImage = () => {};
+  };
+  const uploadImage = () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then(() => {
+      alert('Image Uploaded');
+    })
+  
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div className="input_container">
@@ -40,11 +47,10 @@ export default function AddTodo() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-      
+
         <label for="start">Дедлайн:</label>
         <input
           className="deadlinestyle"
-
           type="date"
           name="deadline"
           value={deadline}
@@ -54,9 +60,9 @@ export default function AddTodo() {
 
         <input
           type="file"
-          
-          value={addFile}
-          onChange={(e) => setAddFile(e.target.value)}
+          accept="image/png, image/jpeg"
+          // value={addFile}
+          onChange={(e) => setImageUpload(e.target.value[0])}
         />
         <button onClick={uploadImage}>Загрузить</button>
       </div>
