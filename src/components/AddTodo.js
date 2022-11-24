@@ -1,21 +1,16 @@
 import React from "react";
 import { db, storage } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import {
-  ref,
-  uploadBytes,
-} from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 
 export default function AddTodo() {
-
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [deadline, setDeadline] = React.useState("");
-  const [image, setImage] = React.useState('');
-  const [imageURL, setImageURL] = React.useState('');
+  const [image, setImage] = React.useState("");
+  const [imageURL, setImageURL] = React.useState("");
   const fileReader = new FileReader();
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,19 +24,16 @@ export default function AddTodo() {
         completed: false,
       });
       setTitle("");
-      setDescription('');
-      setDeadline('');
-      setImage('');
-      setImageURL('');
-
-
+      setDescription("");
+      setDeadline("");
+      setImage("");
+      setImageURL("");
     }
     console.log("handle", title);
   };
 
   fileReader.onloadend = () => {
     setImageURL(fileReader.result);
-   
   };
   const handleOnChange = async (e) => {
     e.preventDefault();
@@ -51,9 +43,10 @@ export default function AddTodo() {
       setImage(file);
       fileReader.readAsDataURL(file);
       const imageRef = ref(storage, `images/${file.name + v4()}`);
-     await uploadBytes(imageRef, file);
-     setImage('');
-    } setImage('');
+      await uploadBytes(imageRef, file);
+      setImage("");
+    }
+    setImage("");
     // console.log("change", e.target.files[0]);
   };
   return (
@@ -74,7 +67,7 @@ export default function AddTodo() {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <label >Дедлайн:</label>
+        <label>Дедлайн:</label>
         <input
           className="deadlinestyle"
           type="date"
@@ -82,7 +75,7 @@ export default function AddTodo() {
           value={deadline}
           onChange={(e) => setDeadline(e.target.value)}
         />
-        <label >Прикрепить файл:</label>
+        <label>Прикрепить файл:</label>
 
         <input
           type="file"

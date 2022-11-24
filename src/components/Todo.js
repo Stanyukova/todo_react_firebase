@@ -12,7 +12,7 @@ export default function Todo({
   const [newTitle, setNewTitle] = React.useState(todo.title);
   const [newDescription, setNewDescription] = React.useState(todo.description);
   const [newDeadline, setNewDeadline] = React.useState(todo.deadline);
-  
+
   const [newImageURL, setNewImageURL] = React.useState(todo.file);
   const fileReader = new FileReader();
 
@@ -22,9 +22,9 @@ export default function Todo({
       setNewTitle(todo.title);
     } else {
       todo.title = "";
-      setNewTitle(e.target.value);console.log('input')
+      setNewTitle(e.target.value);
+      console.log("input");
     }
-    
   };
   const handleChangeDescr = (e) => {
     e.preventDefault();
@@ -47,9 +47,8 @@ export default function Todo({
 
   fileReader.onloadend = () => {
     setNewImageURL(fileReader.result);
- 
   };
- 
+
   return (
     <div className="todo">
       <input
@@ -67,23 +66,25 @@ export default function Todo({
         onChange={handleChangeDescr}
       ></textarea>
       <input
-        style={{ display: todo.completed && "none", 
-        color: todo.deadline<= new Date().toLocaleDateString('en-ca')  && 'red',
-       }}
+        style={{
+          display: todo.completed && "none",
+          color:
+            todo.deadline <= new Date().toLocaleDateString("en-ca") && "red",
+        }}
         type="date"
         id="deadline"
         className="deadline"
         value={todo.deadline === "" ? newDeadline : todo.deadline}
         onChange={handleChangeDeadline}
       />
-     
- <img
-  style={{ display: todo.completed && "none" }}
-//  value={todo.file === "" ? newImage : todo.file}
-          src={todo.imageURL ? todo.imageURL : "no_photo.jpg"}
-          className="file-uploader__preview"
-          alt="Здесь может быть фото котика..."
-        />
+
+      <img
+        style={{ display: todo.completed && "none" }}
+        //  value={todo.file === "" ? newImage : todo.file}
+        src={todo.imageURL ? todo.imageURL : "no_photo.jpg"}
+        className="file-uploader__preview"
+        alt="Здесь может быть фото котика..."
+      />
       <div>
         <button
           className="button-complete"
@@ -103,8 +104,6 @@ export default function Todo({
           <DeleteIcon id="i" />
         </button>
       </div>
-     
     </div>
-    
   );
 }
