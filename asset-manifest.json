@@ -1,15 +1,15 @@
 {
-  "main.css": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/css/main.6d13d5ef.chunk.css",
-  "main.js": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/main.b1e2c377.chunk.js",
-  "main.js.map": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/main.b1e2c377.chunk.js.map",
-  "runtime~main.js": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/runtime~main.f1879074.js",
-  "runtime~main.js.map": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/runtime~main.f1879074.js.map",
-  "static/js/2.77ed71ba.chunk.js": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/2.77ed71ba.chunk.js",
-  "static/js/2.77ed71ba.chunk.js.map": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/2.77ed71ba.chunk.js.map",
-  "static/js/3.1d9e4d91.chunk.js": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/3.1d9e4d91.chunk.js",
-  "static/js/3.1d9e4d91.chunk.js.map": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/js/3.1d9e4d91.chunk.js.map",
-  "index.html": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/index.html",
-  "precache-manifest.dcd43f6e3fc9962abe719e84614c4ebb.js": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/precache-manifest.dcd43f6e3fc9962abe719e84614c4ebb.js",
-  "service-worker.js": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/service-worker.js",
-  "static/css/main.6d13d5ef.chunk.css.map": "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/static/css/main.6d13d5ef.chunk.css.map"
+  "main.css": "/todo_react_firebase/static/css/main.6d13d5ef.chunk.css",
+  "main.js": "/todo_react_firebase/static/js/main.b1e2c377.chunk.js",
+  "main.js.map": "/todo_react_firebase/static/js/main.b1e2c377.chunk.js.map",
+  "runtime~main.js": "/todo_react_firebase/static/js/runtime~main.39a39312.js",
+  "runtime~main.js.map": "/todo_react_firebase/static/js/runtime~main.39a39312.js.map",
+  "static/js/2.c23c927d.chunk.js": "/todo_react_firebase/static/js/2.c23c927d.chunk.js",
+  "static/js/2.c23c927d.chunk.js.map": "/todo_react_firebase/static/js/2.c23c927d.chunk.js.map",
+  "static/js/3.1d9e4d91.chunk.js": "/todo_react_firebase/static/js/3.1d9e4d91.chunk.js",
+  "static/js/3.1d9e4d91.chunk.js.map": "/todo_react_firebase/static/js/3.1d9e4d91.chunk.js.map",
+  "index.html": "/todo_react_firebase/index.html",
+  "precache-manifest.24dba799c8b3947af8a8aa87f618caa1.js": "/todo_react_firebase/precache-manifest.24dba799c8b3947af8a8aa87f618caa1.js",
+  "service-worker.js": "/todo_react_firebase/service-worker.js",
+  "static/css/main.6d13d5ef.chunk.css.map": "/todo_react_firebase/static/css/main.6d13d5ef.chunk.css.map"
 }

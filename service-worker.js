@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/precache-manifest.dcd43f6e3fc9962abe719e84614c4ebb.js"
+  "/todo_react_firebase/precache-manifest.24dba799c8b3947af8a8aa87f618caa1.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("%7BStanyukova%7D.github.io/%7Btodo_react_firebase%7D/index.html", {
+workbox.routing.registerNavigationRoute("/todo_react_firebase/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
