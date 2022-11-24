@@ -12,15 +12,19 @@ export default function Todo({
   const [newTitle, setNewTitle] = React.useState(todo.title);
   const [newDescription, setNewDescription] = React.useState(todo.description);
   const [newDeadline, setNewDeadline] = React.useState(todo.deadline);
-  const [newAddFile, setNewAddFile] = React.useState(todo.addFile);
+  
+  const [newImageURL, setNewImageURL] = React.useState(todo.file);
+  const fileReader = new FileReader();
+
   const handleChange = (e) => {
     e.preventDefault();
     if (todo.complete === true) {
       setNewTitle(todo.title);
     } else {
       todo.title = "";
-      setNewTitle(e.target.value);
+      setNewTitle(e.target.value);console.log('input')
     }
+    
   };
   const handleChangeDescr = (e) => {
     e.preventDefault();
@@ -41,16 +45,11 @@ export default function Todo({
     }
   };
 
-
-  // const handleChangeFile = (e) => {
-  //   e.preventDefault();
-  //   if (todo.complete === true) {
-  //     setNewAddFile(todo.addFile);
-  //   } else {
-  //     todo.deadline = "";
-  //     setNewAddFile(e.target.value);
-  //   }
-  // };
+  fileReader.onloadend = () => {
+    setNewImageURL(fileReader.result);
+ 
+  };
+ 
   return (
     <div className="todo">
       <input
@@ -78,16 +77,13 @@ export default function Todo({
         onChange={handleChangeDeadline}
       />
      
-     
-      
-      <input
-        type="file"
-        style={{ display: todo.completed && "none" }}
-        // value={todo.addFile === "" ? newAddFile : todo.addFile}
-        // value={newAddFile}
-        // onChange={handleChangeFile}
-      />
-
+ <img
+  style={{ display: todo.completed && "none" }}
+//  value={todo.file === "" ? newImage : todo.file}
+          src={todo.imageURL ? todo.imageURL : "no_photo.jpg"}
+          className="file-uploader__preview"
+          alt="Здесь может быть фото котика..."
+        />
       <div>
         <button
           className="button-complete"
@@ -98,7 +94,7 @@ export default function Todo({
         <button
           className="button-edit"
           onClick={() =>
-            handleEdit(todo, newTitle, newDescription, newDeadline, newAddFile)
+            handleEdit(todo, newTitle, newDescription, newDeadline)
           }
         >
           <EditIcon id="i" />

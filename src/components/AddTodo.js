@@ -1,15 +1,22 @@
 import React from "react";
 import { db, storage } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+} from "firebase/storage";
 import { v4 } from "uuid";
 
 export default function AddTodo() {
+
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [deadline, setDeadline] = React.useState("");
-  const [addFile, setAddFile] = React.useState("");
-  const [imageUpload, setImageUpload] = React.useState(null);
+  const [image, setImage] = React.useState('');
+  const [imageURL, setImageURL] = React.useState('');
+  const fileReader = new FileReader();
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (title !== "") {
@@ -17,18 +24,37 @@ export default function AddTodo() {
         title,
         description,
         deadline,
+        imageURL,
+        image,
         completed: false,
       });
       setTitle("");
+      setDescription('');
+      setDeadline('');
+      setImage('');
+      setImageURL('');
+
+
     }
+    console.log("handle", title);
   };
-  const uploadImage = () => {
-    if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then(() => {
-      alert('Image Uploaded');
-    })
-  
+
+  fileReader.onloadend = () => {
+    setImageURL(fileReader.result);
+   
+  };
+  const handleOnChange = async (e) => {
+    e.preventDefault();
+
+    if (e.target.files && e.target.files.length) {
+      const file = e.target.files[0];
+      setImage(file);
+      fileReader.readAsDataURL(file);
+      const imageRef = ref(storage, `images/${file.name + v4()}`);
+     await uploadBytes(imageRef, file);
+     setImage('');
+    } setImage('');
+    // console.log("change", e.target.files[0]);
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -48,7 +74,7 @@ export default function AddTodo() {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <label for="start">Дедлайн:</label>
+        <label >Дедлайн:</label>
         <input
           className="deadlinestyle"
           type="date"
@@ -56,15 +82,18 @@ export default function AddTodo() {
           value={deadline}
           onChange={(e) => setDeadline(e.target.value)}
         />
-        <label for="avatar">Прикрепить файл:</label>
+        <label >Прикрепить файл:</label>
 
         <input
           type="file"
           accept="image/png, image/jpeg"
-          // value={addFile}
-          onChange={(e) => setImageUpload(e.target.value[0])}
+          onChange={handleOnChange}
         />
-        <button onClick={uploadImage}>Загрузить</button>
+        <img
+          src={imageURL ? imageURL : "no_photo.jpg"}
+          className="file-uploader__preview"
+          alt="Здесь может быть фото котика..."
+        />
       </div>
       <div className="btn_container">
         <button>Добавить</button>

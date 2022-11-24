@@ -171,6 +171,11 @@ input::file-selector-button:hover {
 .redColor {
   color: red;
 }
+
+img {
+  width: 300px;
+  margin: 10px;
+}
 @media screen and (max-width: 667px) {
   .task_container {
     width: 90%;

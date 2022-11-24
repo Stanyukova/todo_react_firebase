@@ -14,10 +14,14 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { getStorage, ref, deleteObject } from "firebase/storage";
+
+import { v4 } from "uuid";
 
 function App() {
   const [todos, setTodos] = React.useState([]);
-
+  const storage = getStorage();
+  
   React.useEffect(() => {
     const q = query(collection(db, "todos"));
     const unsub = onSnapshot(q, (querySnapshot) => {
@@ -30,19 +34,26 @@ function App() {
     return () => unsub();
   }, []);
 
-  const handleEdit = async (todo, title, description, deadline, addFile) => {
+  const handleEdit = async (todo, title, description, deadline) => {
     await updateDoc(doc(db, "todos", todo.id), 
     { title: title,
       description: description,
       deadline: deadline,
-      addFile: addFile,
+     
      });
   };
   const toggleComplete = async (todo) => {
     await updateDoc(doc(db, "todos", todo.id), { completed: !todo.completed });
   };
-  const handleDelete = async (id) => {
+  const handleDelete = async ( id) => {
     await deleteDoc(doc(db, "todos", id));
+
+    // await deleteObject(ref(storage, 'images/{}')) .then(() => {
+    // }).catch((error) => {
+   
+    // });
+  
+  
   };
   return (
     <div className="App">
@@ -63,11 +74,7 @@ function App() {
           />
         ))}
       </div>
-    <script src=".dateColor"> </script> 
-   
-     
     </div>
-    
   );
 }
 export default App;
