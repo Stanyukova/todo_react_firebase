@@ -6,13 +6,20 @@
 body {
   background-color: #bca7faba;
 }
-.title h1 {
+.title h1, h2 {
   color: #3a3a3a;
   text-align: center;
-  margin: 30px 0;
+  margin: 20px 0 15px 0;
   font-family: "Ubuntu Mono", monospace;
   font-weight: 700;
 }
+.info {
+  color: #427082;
+  text-align: center;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 15px;
+}
+
 form {
   max-width: 500px;
   margin: 0 auto;
@@ -149,7 +156,10 @@ input::file-selector-button:hover {
   border-radius: 50%;
 }
 #i {
-  font-size: 35px;
+  font-size: 25px;
+}
+#i2 {
+  font-size: 15px;
 }
 .button-complete {
   color: #00d01c;
@@ -167,8 +177,8 @@ input::file-selector-button:hover {
 }
 
 img {
-  width: 300px;
-  margin: 10px;
+  width: 100%;
+  margin: 0px;
 }
 @media screen and (max-width: 667px) {
   .task_container {
