@@ -13,7 +13,7 @@ export default function Todo({
   const [newDescription, setNewDescription] = React.useState(todo.description);
   const [newDeadline, setNewDeadline] = React.useState(todo.deadline);
 
-  const [newImageURL, setNewImageURL] = React.useState(todo.file);
+  const [ setNewImageURL] = React.useState(todo.file);
   const fileReader = new FileReader();
 
   const handleChange = (e) => {
